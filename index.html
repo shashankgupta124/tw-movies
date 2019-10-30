@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Movie App</title>
+	<meta name="keywords" content="movie, movies, latest movies, trending movies" />
+	<meta name="description" content="This app is all about the movies." />
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="assets/css/normalize.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css">
+</head>
+
+<body>
+
+	<!-- Header start -->
+	<header class="header" role="">
+		<h1 class="header__title">
+			Movie App
+		</h1>
+		<nav class="navbar" role="navigation">
+			<ul class="navbar__menu" role="menu">
+				<li class="navbar__item active" role="menuitem">
+					<a href="">Home</a>
+				</li>
+				<li class="navbar__item" role="menuitem">
+					<a href="">Explore</a>
+				</li>
+			</ul>
+		</nav>
+	</header>
+	<!-- Header end -->
+
+	<!-- Main section start -->
+	<main class="container-fluid" role="main">
+		<section class="container">
+			<header role="heading">
+				<h2>Latest</h2>
+			</header>
+			<section class="movies_list">
+				<section class="card">
+					<figure>
+						<img class="card__image" src="assets/images/placeholder.jpg" role="img">
+					</figure>
+					<section class="card__desc">
+						<h3 class="card__title">
+							<span>
+								Movie 1
+							</span>
+							<i class="fa fa-heart text-danger pull-right"></i>
+						</h3>
+						<p class="">
+							Adventure, Drama
+						</p>
+						<h4 class="card__rating">
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star-o"></i>
+							<a href="#" class="text-info pull-right">
+								Show more
+							</a>
+						</h4>
+					</section>
+				</section>
+			</section>
+		</section>
+	</main>
+	<!-- Main section end -->
+
+</body>
+<script type="module" src="assets/js/card.js"></script>
+
+</html>

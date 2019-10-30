@@ -1,0 +1,47 @@
+html {
+  line-height: 1.15; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+}
+
+body {
+  margin: 0;
+}
+
+main {
+  display: block;
+}
+
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+hr {
+  box-sizing: content-box; /* 1 */
+  height: 0; /* 1 */
+  overflow: visible; /* 2 */
+}
+
+a {
+  background-color: transparent;
+}
+
+b, strong {
+  font-weight: bolder;
+}
+
+small {
+  font-size: 80%;
+}
+
+img {
+  border-style: none;
+}
+
+select {
+  font-family: inherit;
+  font-size: 100%; 
+  line-height: 1.15;
+  margin: 0;
+  text-transform: none;
+}
