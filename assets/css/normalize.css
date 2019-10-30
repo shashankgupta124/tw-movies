@@ -50,7 +50,7 @@
 	color:#ccc;
 }
 
-.navbar__item.active{
+.navbar__item.navbar__item--ctive{
 	background: #000;
 }
 
