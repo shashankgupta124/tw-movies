@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Movie Details</title>
+	<meta name="keywords" content="Movies, Latest Movies, Trending Movies, Popular Movies" />
+	<meta name="description" content="This app is all about the movies." />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="import" id="header" href="assets/template/header.html" />
+	<link rel="import" id="card" href="assets/template/card.html">
+	<link rel="import" id="quick-view" href="assets/template/popup.html">
+
+	<link rel="stylesheet" type="text/css" href="assets/css/movie.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css">
+</head>
+
+<body>
+	<!-- Header start -->
+	<section id="headerTemp"></section>
+	<!-- Header end -->
+
+	<!-- Main start -->
+	<main>
+		<!--banner start-->
+		<article class="movie-details">
+			<section class="banner" role="banner">
+				<div class="bg__img">
+					<img class="banner__img" role="img">
+				</div>
+				<!-- <img class="banner__imgg" role="img"> -->
+				<h3 class="banner__badge">
+					Mark as favourite
+					<a class="banner__icon">
+						<i class="fa fa-heart-o text-danger"></i>
+					</a>
+				</h3>
+			</section>
+			<!--banner end-->
+
+			<section class="container">
+				<div class="content">
+					<article class="content__width">
+						<h2 class="content__heading"></h2>
+						<p class="content__desc"></p>
+					</article>
+					<aside class="content__width">
+						<section class="content__bg">
+							<table class="content__table">
+								<tbody>
+									<tr valign="top">
+										<td width="100px">
+											<strong>Genre</strong>
+										</td>
+										<td>
+											<span class="genre-names"></span>
+										</td>
+									</tr>
+									<tr valign="top">
+										<td>
+											<strong>Cast</strong>
+										</td>
+										<td>
+											<p class="cast"></p>
+										</td>
+									</tr>
+									<tr valign="top">
+										<td>
+											<strong>Director</strong>
+										</td>
+										<td>
+											<span class="director"></span>
+										</td>
+									</tr>
+									<tr valign="top">
+										<td>
+											<strong>Movie Rating</strong>
+										</td>
+										<td>
+											<span class="rating"></span>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+								
+						</section>
+					</aside>
+				</div>
+			</section>
+		</article>
+
+		<article class="container">
+			<h2 role="heading">Related Movies</h2>
+			<section id="related-movies" class="movies_list related-movies"></section>
+		</article>
+	</main>
+	<!-- Main end -->
+
+</body>
+<!-- movie JS -->
+<script type="module" src="assets/js/movie.js"></script>
+
+</html>

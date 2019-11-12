@@ -1,0 +1,54 @@
+<template id="model-popup">
+    <section class="movie__quick-view">
+        <h1 class="movie-modal__title">
+            <slot name="movie-quick-title"></slot>
+            <button class="movie-modal__close" id="modal-close"><span  >&times;</span></button>
+            </h2>
+            <div class="movie-modal__details">
+                <figure class="movie-modal__image">
+                    <slot name="movie-modal-image"></slot>
+                </figure>
+                <article class="movie-modal__description">
+                    <p class="movie-description--scroll">
+                        <slot name="movie-modal-description"></slot>
+                    </p>
+                </article>
+            </div>
+            <section>
+                <ul class="movie-modal__list">
+                    <li>
+                        <div class="modal-list__details">
+                            <b class="modal-detail__heading">Genres</b>
+                            <p class="modal-detail__description">
+                                <slot name="movie-modal-genres"></slot>
+                            </p>
+                    </li>
+                    </div>
+                    <li>
+                        <div class="modal-list__details">
+                            <b class="modal-detail__heading">Cast</b>
+                            <p class="modal-detail__description">
+                                <slot name="movie-modal-cast"></slot>
+                            </p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="modal-list__details">
+                            <b class="modal-detail__heading">Director</b>
+                            <p class="modal-detail__description">
+                                <slot name="movie-modal-director"></slot>
+                            </p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="modal-list__details">
+                            <b class="modal-detail__heading">Movie Rating</b>
+                            <p class="modal-detail__description">
+                                <slot name="movie-modal-rating"></slot>
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+    </section>
+</template>

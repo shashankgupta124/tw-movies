@@ -1,0 +1,90 @@
+<template id="movie-card">
+    <section class="card">
+        <figure id="model" role="img">
+            <slot name="movie-img"></slot>
+        </figure>
+        <section class="card__desc">
+            <h3 class="card__title">
+                <slot name="movie-title"></slot>
+                <slot name="movie-popularity"></slot>
+            </h3>
+            <slot name="movie-genres"></slot>
+            <!-- <slot name="movie-rating"></slot> -->
+            <h4 class="card__rating">             
+                    <slot name="movie-rating"></slot>
+                    <a id="moreinfo" role="link">
+                        <slot name="more-info"></slot>
+                    </a>
+                </h4>
+            <!-- <h4 class="card__rating">             
+                <slot name="movie-rating"></slot>
+                <a id="moreinfo">
+                    <slot name="more-info"></slot>
+                </a>
+            </h4> -->
+        </section>
+    </section>
+
+    <style>
+        .card {
+            width: 18em;
+            min-width: 18em;
+            border: 1px solid #9c9b9b;
+            margin-bottom: 1em;
+            border-radius: 7px;
+        }
+
+        .card:hover {
+            box-shadow: 0 0 10px 7px #9c9b9b;
+        }
+
+        .card figure {
+            padding: 0;
+            margin: 0;
+        }
+
+        .card-image {
+            cursor: pointer;
+            width: 100%;
+            height: 170px;
+        }
+
+        .card__desc {
+            padding: 1em;
+        }
+
+        .card__title {
+            margin-top: 0;
+            margin-block-end: 0em;
+        }
+
+        .card__title span {
+            font-size: 0.9em;
+        }
+
+        .cart__item {
+            cursor: pointer;
+        }
+
+        .card__rating {
+            margin-bottom: 0;    
+            margin-block-start: 0em;
+        }
+
+        .pull-left {
+            float: left;
+        }
+
+        .pull-right {
+            float: right;
+        }
+
+        .text-danger {
+            color: #ff0000;
+        }
+
+        .text-info {
+            color: #0099cc;
+        }
+    </style>
+</template>

@@ -4,56 +4,45 @@
 <head>
 	<meta charset="utf-8">
 	<title>Movie App</title>
-	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="assets/css/normalize.css">
+	<meta name="keywords" content="Movies, Latest Movies, Trending Movies, Popular Movies" />
+	<meta name="description" content="This app is all about the movies." />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="import" id="header" href="assets/template/header.html"/>
+	<link rel="import" id="card" href="assets/template/card.html">
+	<link rel="import" id="quick-view" href="assets/template/popup.html">
+
+	<link rel="stylesheet" type="text/css" href="assets/css/movie.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css">
+
 </head>
 
 <body>
 	<!-- Header start -->
-	<header class="header" role="">
-		<h1 class="header__title">
-			Movie App
-		</h1>
-		<nav class="navbar" role="navigation">
-			<ul class="navbar__menu" role="menu">
-				<li class="navbar__item navbar__item--active" role="menuitem">
-					<a href="">Home</a>
-				</li>
-				<li class="navbar__item" role="menuitem">
-					<a href="">Explore</a>
-				</li>
-			</ul>
-		</nav>
-	</header>
+	<section id="headerTemp"></section>
 	<!-- Header end -->
 
 	<!-- Main section start -->
 	<main class="container-fluid" role="main">
-		<section class="container">
-			<header role="heading">
-				<h2>Latest</h2>
-			</header>
+		<article class="container">
+			<h2 role="heading">Latest</h2>
 			<section class="movies_list latest-movies"></section>
-		</section>
+		</article>
 
-		<section class="container">
-			<header role="heading">
-				<h2>Trending Movies</h2>
-			</header>
+		<article class="container">
+			<h2 role="heading">Trending Movies</h2>
 			<section class="movies_list trending-movies"></section>
-		</section>
-		
-		<section class="container">
-			<header role="heading">
-				<h2>Most Watched</h2>
-			</header>
+		</article>
+
+		<article class="container">
+			<h2 role="heading">Most Watched</h2>
 			<section class="movies_list most-watched"></section>
-		</section>
+		</article>
+
 	</main>
 	<!-- Main section end -->
 
 </body>
-<script type="module" src="assets/js/movie-home.js"></script>
-
+	<!-- Main JS -->
+	<script type="module" src="assets/js/index.js"></script>
 </html>
