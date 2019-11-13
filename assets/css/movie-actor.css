@@ -1,0 +1,47 @@
+
+.detail {
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+}
+.detail__image {
+    width: 30%;
+    height: 17em;
+    object-fit: cover;
+    border-radius: 0.5em;
+}
+.detail__content {
+    width: 63%;
+    background: #f1f1f1;
+    padding: 1em;
+    border-radius: 0.5em;
+}
+.detail__heading {
+    margin: 0;
+}
+.rate-meter {
+    display: inline-flex;
+}
+.rate-meter h2 {
+    margin: 0;
+    font-weight: 400;
+    margin-left: 0.3em;
+    text-align: center;
+}
+.birthday{
+    margin-bottom: 1.5em;
+}
+.list {
+    display: flex;
+    flex-wrap: wrap;
+}
+.list h3 {
+    background: #f1f1f1;
+    margin: 0;
+    padding: 0.7em;
+    width: 100%;
+}
+.list__col {
+    width: 23.5%;
+    padding: 0.5em;
+}

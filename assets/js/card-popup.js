@@ -1,38 +1,47 @@
+"use strict";
+
 // PopUp custom element
 export function customElement() {
-
     customElements.define("model-popup",
-        class MovieQuickView extends HTMLElement {
-            constructor() {
-                super();
-                // Bring in the import content.
-                var link = document.querySelector('link#quick-view');
-                console.log(link);
+        class MoviePopUp extends HTMLElement {
+            constructor() { super(); }
 
-                let template = link.import.getElementById("model-popup").content;
-                let shadowRoot = this.attachShadow({ mode: 'open' });
-                shadowRoot.appendChild(template.cloneNode(true));
+            connectedCallback() {
+                try {
+                    // Bring in the import content.
+                    var link = document.querySelector('link#quick-view');
+                    console.log(link);
 
-                //link card css file
-                const linkElement = document.createElement("link");
-                linkElement.setAttribute('rel', 'stylesheet');
-                linkElement.setAttribute('href', 'assets/css/popup.css');
-                shadowRoot.appendChild(linkElement);
+                    let template = link.import.getElementById("model-popup").content;
+                    let shadowRoot = this.attachShadow({ mode: 'open' });
+                    shadowRoot.appendChild(template.cloneNode(true));
 
-                //close the modal
-                shadowRoot.getElementById('modal-close').addEventListener('click', removeModal);
+                    //link card css file
+                    const linkElement = document.createElement("link");
+                    linkElement.setAttribute('rel', 'stylesheet');
+                    linkElement.setAttribute('href', 'assets/css/popup.css');
+                    shadowRoot.appendChild(linkElement);
 
-                function removeModal() {
-                    document.getElementsByTagName('model-popup').length && document.body.removeChild(document.getElementsByTagName('model-popup')[0]);
+                    //close the modal
+                    shadowRoot.getElementById('modal-close').addEventListener('click', removeModal);
+                    function removeModal() {
+                        document.getElementsByTagName('model-popup').length && document.body.removeChild(document.getElementsByTagName('model-popup')[0]);
+                    }
+                    window.addEventListener('click', removeModal);
                 }
-                window.addEventListener('click', removeModal);
+                catch (ex) { console.log("MoviePopUp error: ", ex); }
+
             }
             //called when the element is distroyed
             disconnectedCallback() {
-                function removeModal() {
-                    document.getElementsByTagName('model-popup').length && document.body.removeChild(document.getElementsByTagName('model-popup')[0]);
+                try {
+                    function removeModal() {
+                        document.getElementsByTagName('model-popup').length && document.body.removeChild(document.getElementsByTagName('model-popup')[0]);
+                    }
+                    window.addEventListener('click', removeModal);
                 }
-                window.addEventListener('click', removeModal);
+                catch (ex) { console.log("removeModal error: ", ex); }
+
             }
         }
     )
