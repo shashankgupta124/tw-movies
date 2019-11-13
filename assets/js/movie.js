@@ -19,7 +19,7 @@ const showMovieDetails = (movie) => {
 	try {
 		console.log("movie-details: ", movie);
 		let section = document.querySelectorAll(".movie-details")[0];
-		let bannerImg = section.querySelector('.banner__img').src = VARIABLES.IMG_PATH + movie.backdrop_path;
+		let bannerImg = section.querySelector('.banner__img').src = VARIABLES.IMG_PATH_HD + movie.backdrop_path;
 		// let bannerImgg = section.querySelector('.banner__imgg').setAttribute("style", `background-image:url('${img_path + movie.backdrop_path}'); width:100%; height:100%; background-size:cover;`);
 		section.querySelector('.content__heading').textContent = movie.original_title;
 		section.querySelector('.content__desc').textContent = movie.overview;
