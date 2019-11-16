@@ -2,13 +2,20 @@
 <html>
 
 <head>
+	<title>Actor Details</title>
+	<link rel="icon" href="./assets/img/favicon.ico" type="image/x-icon">
+
 	<meta charset="utf-8">
-	<title>Movie Actor Details</title>
+    <meta name="author" content="Shashank Gupta">
 	<meta name="keywords" content="Movies, Latest Movies, Trending Movies, Popular Movies" />
 	<meta name="description" content="This app is all about the movies." />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+	<script src="assets/js/polymer.min.js"></script>
+
 	<link rel="import" id="header" href="assets/template/header.html" />
+	<link rel="import" id="actorTemp" href="assets/template/actorTemp.html" />
+
 	<link rel="stylesheet" type="text/css" href="assets/css/movie.css">
 </head>
 
@@ -17,52 +24,62 @@
 	<section id="headerTemp"></section>
 	<!-- Header end -->
 
-	<!-- Main Content starts here -->
-	<main class="container-fluid actor-details" role="main">
-		<section class="container">
-			<figure class="detail">
-				<img src="" class="detail__image">
-				<figcaption class="detail__content">
-					<div class="rate-meter pull-right">
-						<i class="fa fa-star fa-2x"></i>
-						<h2>Meter <br /><strong class="popularity_meter"></strong></h2>
+	<section id="movie-actor"></section>
+
+
+	<!-- main body -->
+	<!-- <main class="container-fluid actor-details" role="main"> -->
+
+	<!-- Actor details section-->
+	<!-- <article class="containr">
+			<section class="actor">
+				<figure>
+					<img src="assets/img/No-image-available.jpg" class="actor__image">
+				</figure>
+				<section class="actor__content">
+					<div class="actor__content__popularity pull-right">
+						<i class="fa fa-star fa-3x"></i>
+						<center>
+							<h2>
+								<span> Meter</span> <br /><strong class="actor__content__popularity--rating"></strong>
+							</h2>
+						</center>
 					</div>
-					<h1 class="detail__heading"></h1>
-					<p>Date of birth : <span class="birthday"></span></p>
-					<p class="biography"></p>
-				</figcaption>
-			</figure>
-		</section>
-		<section class="container">
-			<h2>
-				Filmography
-			</h2>
+					<h1 class="actor__heading"></h1>
+					<p><span class="actor__dob"></span></p>
+					<p class="actor__biography"></p>
+				</section>
+			</section>
+		</article> -->
 
-			<div id="getFilmList">
-			</div>
+	<!-- Filmography section -->
+	<!-- <article class="containr">
+			<section>
+				<h2>Filmography</h2>
+				<section class="filmography"></section>
 
-			<template id="filmList">
-				<div class="list">
-					<h3>
-						<span class="release_year"></span>
-					</h3>
-				</div>
-			</template>
+				<template id="filmography__film">
+					<div class="list">
+						<h3>
+							<span class="release_year"></span>
+						</h3>
+					</div>
+				</template>
 
-			<template id="listCols">
-				<div class="list">
-					<article class="list__col">
-						<p>Title : <span>Movie 1</span></p>
-						<p>Year : <span>2014</span></p>
-						<p>Character : <span>Xyz</span></p>
-					</article>
-				</div>
-			</template>
-		</section>
-		</section>
-	</main>
-	<!-- Main Content starts here -->
+				<template id="filmography__film__list">
+					<div class="list">
+						<article class="list__col">
+							<p>Title : <span>Movie 1</span></p>
+							<p>Year : <span>2014</span></p>
+							<p>Character : <span>Xyz</span></p>
+						</article>
+					</div>
+				</template>
+			</section>
+		</article> -->
+	<!-- </main> -->
+	<!-- main body -->
 </body>
-<script type="module" src="assets/js/movie-actor.js"></script>
+<script type="module" src="assets/js/movie-actor/movie-actor.js"></script>
 
 </html>

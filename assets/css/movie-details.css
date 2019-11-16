@@ -1,14 +1,14 @@
 .banner {
     position: relative;
-    height: 30em;
 }
 .banner__img {
     width: 100%;
+    min-height: 18em;
     max-height: 30em;
-    height: calc(100vh - 11em);
-    /* 
-	height: 100%;
     object-fit: cover;
+    object-position: top;
+    /* 
+    height: calc(100vh - 11em);
     object-position: center;
     */
 }
@@ -39,8 +39,10 @@
 .content__desc {
     font-size: 1em;
     line-height: 1.3em;
-    overflow: auto;
     max-height: 9em;
+    padding-right: 1em;
+    overflow: auto;
+    text-align: justify;
 }
 
 .content__bg{
@@ -58,15 +60,20 @@
     color: var(--sky-blue);
 }
 
-p.cast {
+.cast {
+    max-height: 7em;
+    margin: auto;
+    padding-right: .5em;
+    text-align: justify;
     overflow: auto;
-    max-height: 8em;
 }
 
 p.castt {
-    max-width: 97%;
-    overflow: auto;
+    max-width: 94%;
     max-height: 4.5em;
+    padding-right: .5em;
+    text-align: justify;
+    overflow: auto;
 }
 
 tr{
@@ -77,19 +84,11 @@ th, td {
     padding: 10px;
     text-align: left;
 }
+
 table {
     border-collapse: collapse;
-  }
-tr:last-child{
-    border-bottom: 0px solid #ddd;
 }
 
-@media only screen and (max-width: 768px) {
-    .content{
-        display: block;
-        width: 100%;
-    }
-    .content__width{
-        width: 100%;
-    }
+tr:last-child{
+    border-bottom: 0px solid #ddd;
 }

@@ -1,0 +1,54 @@
+
+
+/* movies  respnsive pointer for tablate */
+@media only screen and (max-width: 768px) {
+    .card{
+        width:49%;
+    }
+    .modal__dialog {
+        width: 90%;
+        margin:2em auto;
+    }
+}
+
+/* popup respnsive pointer for tablate */
+@media only screen and (max-width: 768px) {
+	.movie-modal__details {
+        flex-direction: column;
+    }
+    .movie__quick-view {
+        height: 80%;
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
+}
+@media only screen and (max-width: 848px) {
+	.movie-modal__details {
+        flex-direction: column;
+    }
+}
+
+/* movie-details respnsive pointer for tablate */
+@media only screen and (max-width: 768px) {
+    .content{
+        display: block;
+        width: 100%;
+    }
+    .content__width{
+        width: 100%;
+    }
+}
+
+/* movie-actor respnsive pointer for tablate */
+@media only screen and (max-width: 768px) {
+    .actor {
+        display: block;
+    }
+    .actor__content {
+        width: 95%;
+    }
+    .actor__image {
+        width: 100%;
+        margin-bottom: 1em;
+    }
+}

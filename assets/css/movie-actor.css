@@ -1,47 +1,73 @@
-
-.detail {
+.containr {
+    width: 95%;
+    min-width: 39em;
+    margin: 1em auto;
+}
+/* actor style start */
+.actor {
     margin: 0;
     display: flex;
     justify-content: space-between;
 }
-.detail__image {
-    width: 30%;
-    height: 17em;
+.actor__image {
+    width: 95%;
+    height: 20em;
     object-fit: cover;
-    border-radius: 0.5em;
+    border-radius: 0.3em;
 }
-.detail__content {
-    width: 63%;
+.actor__content {
+    width: 80%;
     background: #f1f1f1;
     padding: 1em;
-    border-radius: 0.5em;
+    border-radius: 0.3em;
 }
-.detail__heading {
+.actor__heading {
+    margin-bottom: .5em;
     margin: 0;
 }
-.rate-meter {
+.actor__content__popularity {
     display: inline-flex;
 }
-.rate-meter h2 {
+.actor__content__popularity h2 {
+    display: inline;
+}
+.actor__content__popularity h3 {
     margin: 0;
     font-weight: 400;
     margin-left: 0.3em;
     text-align: center;
 }
-.birthday{
+.fa-3x{padding: 0em .20em;}
+.actor__dob{
     margin-bottom: 1.5em;
 }
-.list {
-    display: flex;
-    flex-wrap: wrap;
+.actor__biography{
+    max-height: 12.5em;
+    padding-right: 0.5em;
+    margin-bottom: 0px;   
+    text-align: justify;
+    overflow: auto;
+    overflow-x: hidden;
 }
-.list h3 {
-    background: #f1f1f1;
+/* actor style end */
+
+/* filmography style start */
+.filmography__film {
+    margin-bottom: 1em;
+}
+.filmography__film--heading{
+    background: var(--content-bg);
     margin: 0;
-    padding: 0.7em;
-    width: 100%;
-}
-.list__col {
-    width: 23.5%;
     padding: 0.5em;
 }
+.filmography__film__list {
+    display: flex;
+    flex-direction: row;
+}
+.filmography__film--year{
+    padding: 0em 1em;
+}
+.filmography__film--year p {
+    margin: .5em 0em;
+}
+/* filmography style end */

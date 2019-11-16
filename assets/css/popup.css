@@ -6,7 +6,6 @@
     border: 1px solid #888;
     border-radius: 10px;
 }
-
 .movie-modal__close {
     float: right;
     background: transparent;
@@ -14,7 +13,6 @@
     font-size: 1.2em;
     cursor: pointer;
 }
-
 .movie-modal__image {
     width: 320px;
     height: 170px;
@@ -24,62 +22,38 @@
     width: 18em;
     border-radius: 7px;
 }
-
 .movie-modal__details {
     display: flex;
     flex-direction: row;
 }
-
 .movie-modal__title {
     padding: 0.5em 1em;
     border-bottom: 1px solid #9c9b9b;
     margin-block-start: 0em;
     margin-block-end: 0em;
 }
-
 .movie-modal__description {
     margin: 0em 1em;
 }
-
 .movie-modal__list {
     list-style-type: none;
+    margin-top: 0px;
 }
-
 .modal-list__details{
     display: flex;
     flex-direction: row;
 }
-
 .modal-detail__heading {
     width: 20%;
     font-size: 1.1em;
 }
-
 .modal-detail__description {
     width: 80%;
     margin-block-start: 0em;
-    margin-block-end: 1em;
+    margin-block-end: .6em;
     cursor: pointer;
 }
-
 .movie-description--scroll {
     max-height: 172px;
     overflow-y: auto;
-}
-
-@media only screen and (max-width: 768px) {
-	.movie-modal__details {
-        flex-direction: column;
-    }
-    .movie__quick-view {
-        height: 80%;
-        overflow-y: scroll;
-        overflow-x: hidden;
-    }
-}
-
-@media only screen and (max-width: 848px) {
-	.movie-modal__details {
-        flex-direction: column;
-    }
 }

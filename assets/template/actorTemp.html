@@ -1,0 +1,45 @@
+<main class="container-fluid actor-details" role="main">
+    <!-- Actor details section-->
+    <article class="containr">
+        <section class="actor">
+            <figure>
+                <img src="assets/img/No-image-available.jpg" class="actor__image">
+            </figure>
+            <section class="actor__content">
+                <div class="actor__content__popularity pull-right">
+                    <i class="fa fa-star fa-3x"></i>
+                    <center>
+                        <h2><span> Meter</span> <br /><strong class="actor__content__popularity--rating"></strong></h2>
+                    </center>
+                </div>
+                <h1 class="actor__heading"></h1>
+                <p><span class="actor__dob"></span></p>
+                <p class="actor__biography"></p>
+            </section>
+        </section>
+    </article>
+
+    <!-- Filmography section -->
+    <article class="containr">
+        <h2>Filmography</h2>
+        <section class="filmography"></section>
+    </article>
+
+    <template id="filmography__card">
+        <section class="filmography__film">
+            <strong>
+                <h3 class="filmography__film--heading"></h3>
+            </strong>
+        </section>
+    </template>
+    <template id="film__list_card">
+        <section class="filmography__film__list">
+            <article class="filmography__film--year">
+                <p>Title : <span class="film-title"></span></p>
+                <p>Year : <span class="film-year"></span></p>
+                <p>Character : <span class="film-character"></span></p>
+            </article>
+        </section>
+    </template>
+
+</main>

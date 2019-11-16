@@ -2,11 +2,16 @@
 <html>
 
 <head>
-	<meta charset="utf-8">
 	<title>Movie Details</title>
+	<link rel="icon" href="./assets/img/favicon.ico" type="image/x-icon">
+	
+	<meta charset="utf-8">
+    <meta name="author" content="Shashank Gupta">
 	<meta name="keywords" content="Movies, Latest Movies, Trending Movies, Popular Movies" />
 	<meta name="description" content="This app is all about the movies." />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<script src="assets/js/polymer.min.js"></script>
 
 	<link rel="import" id="header" href="assets/template/header.html" />
 	<link rel="import" id="card" href="assets/template/card.html">
@@ -26,7 +31,7 @@
 		<article class="movie-details">
 			<section class="banner" role="banner">
 				<figure>
-					<img class="banner__img" role="img">
+					<img src="assets/img/no-banner.jpg" class="banner__img" role="img">
 					<!-- <img class="banner__imgg" role="img"> -->
 					<figcaption>
 						<h3 class="banner__badge">
@@ -100,6 +105,6 @@
 
 </body>
 <!-- movie JS -->
-<script type="module" src="assets/js/movie.js"></script>
+<script type="module" src="assets/js/movie-details/movie-details.js"></script>
 
 </html>

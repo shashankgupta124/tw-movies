@@ -1,6 +1,6 @@
 "use strict";
-import { VARIABLES } from "./commonVariables.js";
-import { api } from "./movies-api.js";
+import { VARIABLES } from "./common-function/commonVariables.js";
+import { api } from "./common-function/movies-api.js";
 
 try {
     // Movie card list call
