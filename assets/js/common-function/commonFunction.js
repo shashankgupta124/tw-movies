@@ -1,10 +1,9 @@
 "use strict";
 import { VARIABLES } from "./commonVariables.js";
-//import { api } from './movies-api.js';
 
+// common variable for all functions
 
 export var gen = [];
-// common variable for all functions
 export var fun = {
 	getMovieGenres: function () {
 		fetch(VARIABLES.MOVIE_GENRES)
@@ -72,6 +71,9 @@ export var fun = {
 		if (text != null && text != "") {
 			element.querySelector(_class).appendChild(document.createTextNode(text));
 		}
+		else {
+			element.querySelector(_class).appendChild(document.createTextNode('Details not Provided by supplier!'));
+		}
 	},
 	createTextNode: function (element, _class, text) {
 		if (text != null && text != "") {
@@ -79,15 +81,8 @@ export var fun = {
 		}
 	},
 	appendChild: function (parent_node, _class, child) {
-		parent_node.querySelector(_class).appendChild(child);
+		return parent_node.querySelector(_class).appendChild(child);
 	},
+	querry: function (_class) { return document.querySelector(_class); },
 };
-
-// binding header
-// var headerLink = document.querySelector('link#header');
-// let template = headerLink.import.querySelector("header");
-// let header = document.getElementById('headerTemp');
-// header.appendChild(template.cloneNode(true));
-
-fun.bindTemplate('link#header', '.header', 'headerTemp'); // need to check template avalable or not
-//fun.getMovieGenres();
+fun.bindTemplate('#header', '.header', 'headerTemp'); // need to check template avalable or not

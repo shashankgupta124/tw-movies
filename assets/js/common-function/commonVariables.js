@@ -1,6 +1,7 @@
 "use strict";
 
 const API_KEY = "b5edb90984ff194c19f0463f984506c0";
+export var allMoviesRes =[];
 
 // All movie API variables
 export const VARIABLES = {
@@ -22,5 +23,5 @@ export const VARIABLES = {
     },
     ACTOR_FILMOGRAPHY_API: function (ACTOR_ID) {
         return `https://api.themoviedb.org/3/person/${ACTOR_ID}/movie_credits?api_key=${API_KEY}&language=en-US`
-    }
+    },
 }

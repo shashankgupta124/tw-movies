@@ -26,7 +26,7 @@ customElements.define("model-popup",
         connectedCallback() {
             try {
                 // Bring in the import content.
-                var link = document.querySelector('link#quick-view');
+                var link = fun.querry('#quick-view');
                 console.log(link);
 
                 let template = link.import.getElementById("model-popup").content;

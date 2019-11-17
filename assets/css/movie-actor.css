@@ -5,7 +5,6 @@
 }
 /* actor style start */
 .actor {
-    margin: 0;
     display: flex;
     justify-content: space-between;
 }
@@ -13,13 +12,13 @@
     width: 95%;
     height: 20em;
     object-fit: cover;
-    border-radius: 0.3em;
+    border-radius: 0.5em;
 }
 .actor__content {
-    width: 80%;
+    width: 100%;
     background: #f1f1f1;
     padding: 1em;
-    border-radius: 0.3em;
+    border-radius: 0.5em;
 }
 .actor__heading {
     margin-bottom: .5em;
@@ -53,7 +52,7 @@
 
 /* filmography style start */
 .filmography__film {
-    margin-bottom: 1em;
+    margin-top: 1em;
 }
 .filmography__film--heading{
     background: var(--content-bg);
@@ -65,7 +64,7 @@
     flex-direction: row;
 }
 .filmography__film--year{
-    padding: 0em 1em;
+    padding: .5em 1em;
 }
 .filmography__film--year p {
     margin: .5em 0em;

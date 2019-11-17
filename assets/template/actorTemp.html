@@ -3,7 +3,7 @@
     <article class="containr">
         <section class="actor">
             <figure>
-                <img src="assets/img/No-image-available.jpg" class="actor__image">
+                <img src="assets/img/No-image.jpg" class="actor__image">
             </figure>
             <section class="actor__content">
                 <div class="actor__content__popularity pull-right">
@@ -25,19 +25,21 @@
         <section class="filmography"></section>
     </article>
 
-    <template id="filmography__card">
+    <template class="filmography__card">
         <section class="filmography__film">
             <strong>
                 <h3 class="filmography__film--heading"></h3>
             </strong>
         </section>
+        <section class="filmography__film__list"></section>
     </template>
-    <template id="film__list_card">
+
+    <template class="film__list_card">
         <section class="filmography__film__list">
             <article class="filmography__film--year">
-                <p>Title : <span class="film-title"></span></p>
-                <p>Year : <span class="film-year"></span></p>
-                <p>Character : <span class="film-character"></span></p>
+                <p><strong>Title:</strong> <span class="film-title"></span></p>
+                <p><strong>Year:</strong> <span class="film-year"></span></p>
+                <p><strong>Character:</strong> <span class="film-character"></span></p>
             </article>
         </section>
     </template>

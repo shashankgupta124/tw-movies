@@ -13,13 +13,15 @@ function genre(genresIds) {
 }
 
 // movie card
-export function getMovieItem(movieItem) {
+export function getMovieItem(movieItem, length) {
     try {
         var card = '';
-        for (let [idx, movie] of movieItem.results.entries()) {
-            if (idx < 4) {
+        for (let [idx, movie] of movieItem.entries()) {
+            if (idx < length) {
+
+                let img = movie.backdrop_path ? VARIABLES.IMG_PATH + movie.backdrop_path : 'assets/img/No-image.jpg';
                 card += `<movie-card id="${movie.id}">
-                        <img slot="movie-img" class="card-image" id="${movie.id}" src="${VARIABLES.IMG_PATH + movie.backdrop_path}" title="${movie.title}" role="img">
+                        <img slot="movie-img" class="card-image" id="${movie.id}" src="${img}" title="${movie.title}" role="img">
                         <span slot="movie-title">${movie.title}</span>
                         <i slot="movie-popularity" class="fa ${movie.popularity > 200 ? 'fa-heart' : 'fa-heart-o'} text-danger pull-right"></i>
                         <p slot="movie-genres" class="cart__item">${genre(movie.genre_ids)}</p>

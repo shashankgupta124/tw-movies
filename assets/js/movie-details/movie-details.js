@@ -12,7 +12,7 @@ api.getMovies(VARIABLES.RELATED_MOVIES_API(MOVIE_ID), 'related-movies', 0);
 api.getMovieDetails(MOVIE_ID).then(movie => {
 	try {
 		console.log("movie-details: ", movie);
-		let movie_details = document.querySelectorAll(".movie-details")[0];
+		let movie_details = fun.querry(".movie-details");
 		movie_details.querySelector('.banner__img').src = VARIABLES.IMG_PATH_HD + movie.backdrop_path;
 		fun.createText(movie_details, '.content__heading', movie.original_title);
 		fun.createText(movie_details, '.content__desc', movie.overview);

@@ -3,8 +3,8 @@ import { VARIABLES } from '../common-function/commonVariables.js';
 import { api } from '../common-function/movies-api.js';
 
 // bind Actor Template
-fun.bindTemplate('link#actorTemp', '.actor-details', 'movie-actor');
-let actor_Card = document.querySelectorAll(".actor-details")[0];
+fun.bindTemplate('#actorTemp', '.actor-details', 'movie-actor');
+let actor_Card = fun.querry(".actor-details");
 
 const ACTOR_ID = fun.searchParam('id');
 let allActorData = [api.getActor(ACTOR_ID), api.getFilmography(ACTOR_ID)];
@@ -15,10 +15,10 @@ Promise.all(allActorData).then(response => {
         getActor: function () {
             try {
                 // bind actor info
-                actor_Card.querySelector('.actor__image').src = VARIABLES.IMG_PATH + actorData.profile_path;
+                actor_Card.querySelector('.actor__image').src = actorData.profile_path ? VARIABLES.IMG_PATH + actorData.profile_path : 'assets/img/No-image.jpg';
                 fun.createText(actor_Card, '.actor__heading', actorData.name);
                 fun.createText(actor_Card, '.actor__biography', actorData.biography);
-                fun.createText(actor_Card, '.actor__content__popularity--rating', Math.round(actorData.popularity));
+                fun.createText(actor_Card, '.actor__content__popularity--rating', actorData.popularity ? Math.round(actorData.popularity) : '1' );
 
                 if (actorData.birthday != null && actorData.birthday != "") {
                     fun.createText(actor_Card, '.actor__dob', `Date of birth: ${actorData.birthday}`);
@@ -37,62 +37,33 @@ Promise.all(allActorData).then(response => {
                 yearArray = [...uniqueSet].sort().reverse();
                 console.log("yearArray: ", yearArray);
 
-
-
-
-
-                let filmography = document.querySelector(".filmography");
-
-                let filmography__card = document.getElementById("filmography__card");
-                let cloneHeading = document.importNode(filmography__card.content, true);
-
-                let film__list = document.getElementById("film__list_card");
-                let cloneFilm__list = document.importNode(film__list.content, true);
-
-
-
-
-
-
-                let template = document.getElementById("filmography__card");
-                let film = template.content.querySelector(".filmography__film");
-                let film_card = document.importNode(film, true);
-
-                // bind actor filmography details
-
-                let filmography_Card = document.querySelector(".filmography__film");
-                let film_list = document.querySelector(".filmography__film__list");
-                let year_list = document.querySelector(".filmography__film--year");
-
+                let filmography = fun.querry(".filmography");
+                let filmography__card = fun.querry(".filmography__card");
+                let film__list = fun.querry(".film__list_card");
+                
+                // bind filmography
                 yearArray.map(uniqueYear => {
+                    let cloneHeading = document.importNode(filmography__card.content, true);
                     cloneHeading.querySelector(".filmography__film--heading").textContent = uniqueYear;
                     filmography.appendChild(cloneHeading);
 
                     filmographyData.cast.map(item => {
-                        //let heading = filmography_Card.querySelector('.filmography__film--heading').appendChild(document.createTextNode(uniqueYear));
-                        //let heading = fun.createTextNode(filmography_Card, '.filmography__film--heading', uniqueYear);
                         let year = new Date(item.release_date).getFullYear();
-
                         if (uniqueYear == year) {
 
-                            //fun.createText(actor_Card, '.actor__biography', actorData.biography);
-                            cloneFilm__list.querySelector(".film-title").textContent = item.title;
-                            cloneFilm__list.querySelector(".film-year").textContent = item.release_date;
-                            cloneFilm__list.querySelector(".film-character").textContent = item.character;
-                            filmography.querySelector('.filmography__film--year')
-                            // = fun.createTextNode(year_list, '.film-title', item.title);
-                            // let release_date = fun.createTextNode(year_list, '.film-year', item.release_date);
-                            // let character = fun.createTextNode(year_list, '.film-character', item.character);
+                            let film_year = document.importNode(film__list.content.querySelectorAll(".filmography__film--year")[0], true);
+                            film_year.querySelector(".film-title").textContent = item.title;
+                            film_year.querySelector(".film-year").textContent = item.release_date;
+                            film_year.querySelector(".film-character").textContent = item.character != "" ? item.character : 'Details not provided by supplier!';
 
-                           // film_list.appendChild(year_list);
+                            let ele = filmography.querySelectorAll(".filmography__film__list").length;
+                            filmography.querySelectorAll(".filmography__film__list")[ele - 1].appendChild(film_year);
                         }
                     });
-                    filmography_Card.appendChild(heading);
                 });
             }
             catch (ex) { console.log("Movie-Actor error: ", ex) }
         }
     }
-    actor.getActor();
-    actor.getFilmography();
+    actor.getActor(),actor.getFilmography();
 });

@@ -2,11 +2,11 @@
 <html>
 
 <head>
-	<title>Actor Details</title>
+	<title>Movies Search</title>
 	<link rel="icon" href="./assets/img/favicon.ico" type="image/x-icon">
 
 	<meta charset="utf-8">
-    <meta name="author" content="Shashank Gupta">
+	<meta name="author" content="Shashank Gupta">
 	<meta name="keywords" content="Movies, Latest Movies, Trending Movies, Popular Movies" />
 	<meta name="description" content="This app is all about the movies." />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,7 +14,8 @@
 	<!-- <script src="assets/js/polymer.min.js"></script> -->
 
 	<link rel="import" id="header" href="assets/template/header.html" />
-	<link rel="import" id="actorTemp" href="assets/template/actorTemp.html" />
+	<link rel="import" id="card" href="assets/template/card.html">
+	<link rel="import" id="quick-view" href="assets/template/popup.html">
 
 	<link rel="stylesheet" type="text/css" href="assets/css/movie.css">
 </head>
@@ -24,8 +25,20 @@
 	<section id="headerTemp"></section>
 
 	<!-- movie-actor -->
-	<section id="movie-actor"></section>
+	<section class="movie-search">
+		<section class="container">
+			<form name="fetchdata" id="fetchdata">
+				<input type="search" placeholder="search movie here..." id="mydata" />
+				<input type="button" onclick="" id="search" value="find records" />
+			</form>
+		</section>
+
+		<section class="container">
+				<section class="movies_list latest-movies"></section>
+		</section>
+
+	</section>
 </body>
-<script type="module" src="assets/js/movie-actor/movie-actor.js"></script>
+<script type="module" src="assets/js/movie-search/movie-search.js"></script>
 
 </html>

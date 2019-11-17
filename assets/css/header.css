@@ -1,0 +1,36 @@
+
+.header{
+	background:var(--dark-gary);
+	display: inline-block;
+	width: 100%;
+}
+.header__title{
+	margin:0;
+	float: left;
+	color:#8b8b8b;
+	font-size: 1.5em;
+	font-weight: 500;
+	padding:0.5em 1em;
+}
+.navbar{
+	float: left;
+}
+.navbar__menu{
+	list-style: none;
+	margin: 0;
+	padding: 1em 0;
+}
+.navbar__item{
+	display: inline;
+	padding:1em 2.5em;
+}
+.navbar__item a{
+	text-decoration: none;
+	color:var(--content-bg);
+}
+.navbar__item--active{
+	background: var(--z-black);
+}
+.navbar__item:hover{
+	background: var(--z-black);
+}
