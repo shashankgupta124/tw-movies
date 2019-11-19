@@ -27,8 +27,6 @@ customElements.define("model-popup",
             try {
                 // Bring in the import content.
                 var link = fun.querry('#quick-view');
-                console.log(link);
-
                 let template = link.import.getElementById("model-popup").content;
                 let shadowRoot = this.attachShadow({ mode: 'open' });
                 shadowRoot.appendChild(template.cloneNode(true));

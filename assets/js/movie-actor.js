@@ -12,7 +12,7 @@ let allActorData = [api.getActor(ACTOR_ID), api.getFilmography(ACTOR_ID)];
 Promise.all(allActorData).then(response => {
     let actorData = response.shift(), filmographyData = response.shift();
     let actor = {
-        getActor: function () {
+        getActor: () => {
             try {
                 // bind actor info
                 actor_Card.querySelector('.actor__image').src = actorData.profile_path ? VARIABLES.IMG_PATH + actorData.profile_path : 'assets/img/No-image.jpg';
@@ -26,7 +26,7 @@ Promise.all(allActorData).then(response => {
             }
             catch (ex) { console.log("Movie-Actor error: ", ex) }
         },
-        getFilmography: function () {
+        getFilmography: () => {
             try {
                 // method for finding all unique year
                 let yearArray = [], uniqueSet = new Set();

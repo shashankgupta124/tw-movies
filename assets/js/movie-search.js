@@ -1,12 +1,11 @@
 "use strict";
 import { fun } from "./common-function/commonFunction.js";
 import { getMovieItem } from './movie-card.js';
-//import { fun } from './common-function/commonFunction.js';
 
 //range value
-let input = document.querySelector(".search-input");
-let button = document.querySelector(".search-button");
-let clear = document.querySelector(".clear-search");
+let input = fun.querry(".search-input");
+let button = fun.querry(".search-button");
+let clear = fun.querry(".clear-search");
 let range = document.getElementById("range");
 let rangeValue = document.getElementById("rangeValue");
 rangeValue.textContent = range.value;
@@ -15,39 +14,27 @@ range.oninput = function () {
 }
 
 let search_movies = {
-	search: function () {
-		let allMovieRes = [];
-		allMovieRes = JSON.parse(localStorage.getItem('movie'));
-
-		// let filteredMovie = [];
-		// filteredMovie = JSON.parse(localStorage.getItem('movie'));
-
-		//console.log('allMovieRes:', allMovieRes);
+	search: () => {
+		let movies = [], filteredMovie = [];;
+		movies = JSON.parse(localStorage.getItem('movie'));
+		console.log('movies:', movies);
 
 		//unique result filter
-		let ids = [], filteredMovie = [];
-		allMovieRes.map(item => {
-			if (item != '') {
-				if (ids.indexOf(item.id) == -1) {
-					ids.push(item.id);
-					filteredMovie.push(item);
-				}
-			}
-		});
+		filteredMovie = fun.uniqueFilter(movies);
 
-		range.addEventListener('change', function () {
+		range.addEventListener('change', () => {
 			filterRecords(filteredMovie, range.value, input.value.toUpperCase(), 'rating');
 
 		});
-		input.addEventListener('keyup', function () {
+		input.addEventListener('keyup', () => {
 			filterRecords(filteredMovie, range.value, input.value.toUpperCase(), 'input');
 
 		});
-		button.addEventListener('click', function () {
+		button.addEventListener('click', () => {
 			filterRecords(filteredMovie, range.value, input.value.toUpperCase(), 'button');
 
 		});
-		clear.addEventListener('click', function () {
+		clear.addEventListener('click', () => {
 			filterRecords(filteredMovie, 5, '', 'default');
 
 		});
@@ -63,12 +50,10 @@ function filterRecords(filteredMovie, starRating, searchParam, type) {
 			let title = item.title.toUpperCase();
 			let rating = Math.round(item.vote_average / 2);
 			let genres = fun.getGenres(item.genre_ids);
-
+			genres = genres.toUpperCase();
 			// // show all records
 			if (type == 'default' || (type == 'button' && searchParam == '')) {
-				rangeValue.textContent = starRating;
-				range.value = starRating;
-				input.value = '';
+				rangeValue.textContent = starRating; range.value = starRating; input.value = '';
 				return item;
 			}
 			// show rating filter records
@@ -76,28 +61,27 @@ function filterRecords(filteredMovie, starRating, searchParam, type) {
 				return item;
 			}
 			// show input filter records
-			if (title.includes(searchParam) && (type == 'input' || type == 'button') && rating <= starRating) {
+			if (searchParam != '' && (title.includes(searchParam) || genres.includes(searchParam)) && (type == 'input' || type == 'button') && rating <= starRating) {
 				return item;
 			}
 			// show rating with input filter records
-			if (title.includes(searchParam) && (type == 'rating' || type == 'button') && rating == starRating) {
+			if (searchParam != '' && (title.includes(searchParam) || genres.includes(searchParam)) && (type == 'rating' || type == 'button') && rating == starRating) {
 				return item;
 			}
-			// show genres filter records
-			if (searchParam != '' && (type == 'input' || type == 'button') && rating <= starRating) {
-				if (genres.toUpperCase().includes(searchParam)) {
-					return item;
-				}
-			}
-			if (searchParam != '' && (type == 'rating' || type == 'button') && rating == starRating) {
-				if (genres.toUpperCase().includes(searchParam)) {
-					return item;
-				}
-			}
+			// // show genres filter records
+			// if (searchParam != '' && (type == 'input' || type == 'button') && rating <= starRating) {
+			// 	if (genres.trim(',').toUpperCase().includes(searchParam)) {
+			// 		return item;
+			// 	}
+			// }
+			// if (searchParam != '' && (type == 'rating' || type == 'button') && rating == starRating) {
+			// 	if (genres.trim(',').toUpperCase().includes(searchParam)) {
+			// 		return item;
+			// 	}
+			// }
 		}
 		catch (exception) { console.log("filterRecords error: ", exception); }
 	});
-	console.log(totalCard);
 
 	let foundData = `${totalCard.length} movies found.`;
 	let emptyData = `${totalCard.length} movie found.`;

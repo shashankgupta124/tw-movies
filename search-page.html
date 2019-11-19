@@ -30,26 +30,32 @@
 			<section class="containr search">
 				<div class="search">
 					<form class="search-results">
-						<input type="search" placeholder="Search for Movies, Actors, Genres..." class="search-input" required />
-						<button type="button" class="search-button"><i class="fa fa-search"></i></button>
+						<input type="search" placeholder="Search for Movies, Actors, Genres..." class="search-input"
+							required />
+		 				<button type="button" class="search-button"><i class="fa fa-search"></i></button>
 
 						<button type="button" class="clear-search">Clear filters</button>
 					</form>
 				</div>
-				<div class="slider">
-					<datalist>
+
+				<div class="rating">
+					<div ><span class="rating__name">Rating:</span></div>
+					<div class="rating__slider">
+						<datalist class="rating__slider__list">
 							<object>0</object>
 							<object>1</object>
 							<object>2</object>
 							<object>3</object>
 							<object>4</object>
 							<object>5</object>
-					</datalist>
-					<input type="range" min="0" max="5" value="5" class="slider__range" id="range">
-					<p>Star rating: <span id="rangeValue"></span></p>
+						</datalist>
+						<span class="rating__slider__range">
+							<input type="range" min="0" max="5" value="5" class="slider__range" id="range">
+							<span class="slider-range" id="rangeValue"></span>
+						</span>
+					</div>
 				</div>
 			</section>
-			<hr>
 
 			<section class="containr">
 				<p class="search-results search-results--size">

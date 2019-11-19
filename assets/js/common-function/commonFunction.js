@@ -3,13 +3,13 @@ import { VARIABLES } from "./commonVariables.js";
 
 // common variable for all functions
 export var fun = {
-	getMovieGenres: function () {
+	getMovieGenres: () => {
 		fetch(VARIABLES.MOVIE_GENRES)
 			.then(response => { return response.json(); })
 			.then((data) => { localStorage.setItem('genres', JSON.stringify(data.genres)); })
-			.catch(function (error) { console.log("getMovieDetails: ", error) });
+			.catch(error => { console.log("getMovieDetails: ", error) });
 	},
-	getGenres: function (genresIds) {
+	getGenres: genresIds => {
 		var gens = JSON.parse(localStorage.getItem('genres'));
 		try {
 			let names = [];
@@ -20,7 +20,7 @@ export var fun = {
 		}
 		catch (ex) { console.log("getGenresName error: ", ex); }
 	},
-	rating: function (rating) {
+	rating: rating => {
 		try {
 			const RATING = Math.round(rating / 2);
 			let starCount = 5, starRating = '';
@@ -32,7 +32,7 @@ export var fun = {
 		}
 		catch (ex) { console.log("rating error: ", ex); }
 	},
-	genresName: function (genres) {
+	genresName: genres => {
 		try {
 			let genresName = [];
 			genres.forEach((item, index) => {
@@ -42,7 +42,7 @@ export var fun = {
 		}
 		catch (ex) { console.log("genresName error: ", ex); }
 	},
-	castName: function (cast) {
+	castName: cast => {
 		try {
 			let cast_name = '';
 			cast.forEach(item => {
@@ -52,21 +52,33 @@ export var fun = {
 		}
 		catch (ex) { console.log("castName error: ", ex); }
 	},
-	directName: function (director) {
+	directName: director => {
 		try {
 			return director.find(item => item.job === "Director").name;
 		}
 		catch (ex) { console.log("directName error: ", ex); }
 	},
-	searchParam: function (id) {
+	uniqueFilter: response => {
+		let ids = [], filtered = [];
+		response.map(item => {
+			if (item != '') {
+				if (ids.indexOf(item.id) == -1) {
+					ids.push(item.id);
+					filtered.push(item);
+				}
+			}
+		});
+		return response = filtered;
+	},
+	searchParam: id => {
 		return new URLSearchParams(window.location.search).get(id);
 	},
-	bindTemplate: function (link, get_temp_Class, bindTempClass) {
+	bindTemplate: (link, get_temp_Class, bindTempClass) => {
 		var temp_link = document.querySelector(link);
 		let clone = temp_link.import.querySelector(get_temp_Class);
 		document.getElementById(bindTempClass).appendChild(clone.cloneNode(true));
 	},
-	createText: function (element, _class, text) {
+	createText: (element, _class, text) => {
 		if (text != null && text != "") {
 			element.querySelector(_class).appendChild(document.createTextNode(text));
 		}
@@ -74,16 +86,16 @@ export var fun = {
 			element.querySelector(_class).appendChild(document.createTextNode('Details not Provided by supplier!'));
 		}
 	},
-	createTextNode: function (element, _class, text) {
+	createTextNode: (element, _class, text) => {
 		if (text != null && text != "") {
 			return element.querySelector(_class).appendChild(document.createTextNode(text));
 		}
 	},
-	appendChild: function (parent_node, _class, child) {
+	appendChild: (parent_node, _class, child) => {
 		return parent_node.querySelector(_class).appendChild(child);
 	},
-	querry: function (_class) { return document.querySelector(_class); },
-	activeLink: function () {
+	querry: _class => { return document.querySelector(_class); },
+	activeLink: () => {
 		let head = document.querySelectorAll('.navbar__item');
 		if (window.location.href.includes('search-page.html') == true) {
 			head[1].setAttribute('class', 'navbar__item navbar__item--active');
@@ -93,7 +105,24 @@ export var fun = {
 			head[1].setAttribute('class', 'navbar__item');
 		}
 	},
+	//support cross browser
+	import_support: () => {
+		const SUPPORTS = 'import' in document.createElement('link');
+		if (!SUPPORTS) {
+			const polymer = document.createElement('script');
+			polymer.src = "assets/js/polymer.min.js";
+			document.body.appendChild(polymer);
+		}
+		return SUPPORTS;
+	},
 };
-fun.bindTemplate('#header', '.header', 'headerTemp'); // need to check template avalable or not
-fun.activeLink();
+// fun.bindTemplate('#header', '.header', 'headerTemp'); // need to check template avalable or not
+// fun.activeLink();
 
+if (fun.import_support()) {
+	fun.bindTemplate('#header', '.header', 'headerTemp');
+} else {
+	window.addEventListener('HTMLImportsLoaded', function (e) {
+		fun.bindTemplate('#header', '.header', 'headerTemp');
+	});
+}

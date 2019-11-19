@@ -4,10 +4,10 @@ import { VARIABLES, allMoviesRes } from "./commonVariables.js";
 
 // commom function for all movie api call  
 export var api = {
-    getMovies: function (url, _class, index) {
+    getMovies: (url, _class, index) => {
         fetch(url)
             .then(movies => { return movies.json(); })
-            .then((response) => {
+            .then(response => {
                 console.log("getMovies:", response);
                 document.getElementsByClassName(_class)[index].innerHTML = getMovieItem(response.results, 4);
 
@@ -15,27 +15,27 @@ export var api = {
                 allMoviesRes.push(...response.results);
                 localStorage.setItem('movie', JSON.stringify(allMoviesRes));
 
-            }).catch(function (error) { console.log("getMovies error: ", error) });
+            }).catch(error => { console.log("getMovies error: ", error) });
     },
-    getPopup: function (movie_id) {
+    getPopup: movie_id => {
         return fetch(VARIABLES.MOVIE_DETAILS_API(movie_id))
             .then(response => { return response.json(); })
-            .catch(function (error) { console.log("getPopup error: ", error) });
+            .catch(error => { console.log("getPopup error: ", error) });
     },
-    getMovieDetails: function (movie_id) {
+    getMovieDetails: movie_id => {
         return fetch(VARIABLES.MOVIE_DETAILS_API(movie_id))
             .then(response => { return response.json(); })
             //.then((details) => { showMovieDetails(details); })
-            .catch(function (error) { console.log("getMovieDetails: ", error) });
+            .catch(error => { console.log("getMovieDetails: ", error) });
     },
-    getActor: function (actor_id) {
+    getActor: actor_id => {
         return fetch(VARIABLES.ACTOR_DETAILS_API(actor_id))
             .then(response => { return response.json(); })
-            .catch(function (error) { console.log("getActor error: ", error) });
+            .catch(error => { console.log("getActor error: ", error) });
     },
-    getFilmography: function (actor_id) {
+    getFilmography: actor_id => {
         return fetch(VARIABLES.ACTOR_FILMOGRAPHY_API(actor_id))
             .then(response => { return response.json(); })
-            .catch(function (error) { console.log("getFilmography error: ", error) });
+            .catch(error => { console.log("getFilmography error: ", error) });
     },
 }

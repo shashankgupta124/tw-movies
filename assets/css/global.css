@@ -4,5 +4,6 @@
 @import './movie-details.css';
 @import './movie-actor.css';
 @import './responsive.css';
-@import 'header.css';
-@import 'search-page.css';
+@import './header.css';
+@import './search-page.css';
+@import './popup.css';
