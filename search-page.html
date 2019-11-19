@@ -11,7 +11,7 @@
 	<meta name="description" content="This app is all about the movies." />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<!-- <script src="assets/js/polymer.min.js"></script> -->
+	<script src="assets/js/polymer.min.js"></script>
 
 	<link rel="import" id="header" href="assets/template/header.html" />
 	<link rel="import" id="card" href="assets/template/card.html">
@@ -21,24 +21,47 @@
 </head>
 
 <body>
-	<!-- Header section -->
-	<section id="headerTemp"></section>
+	<main class="container-fluid" role="main">
+		<!-- Header section -->
+		<section id="headerTemp"></section>
 
-	<!-- movie-actor -->
-	<section class="movie-search">
-		<section class="container">
-			<form name="fetchdata" id="fetchdata">
-				<input type="search" placeholder="search movie here..." id="mydata" />
-				<input type="button" onclick="" id="search" value="find records" />
-			</form>
-		</section>
+		<!-- movie-actor -->
+		<article class="movie-search"><br>
+			<section class="containr search">
+				<div class="search">
+					<form class="search-results">
+						<input type="search" placeholder="Search for Movies, Actors, Genres..." class="search-input" required />
+						<button type="button" class="search-button"><i class="fa fa-search"></i></button>
 
-		<section class="container">
-				<section class="movies_list latest-movies"></section>
-		</section>
+						<button type="button" class="clear-search">Clear filters</button>
+					</form>
+				</div>
+				<div class="slider">
+					<datalist>
+							<object>0</object>
+							<object>1</object>
+							<object>2</object>
+							<object>3</object>
+							<object>4</object>
+							<object>5</object>
+					</datalist>
+					<input type="range" min="0" max="5" value="5" class="slider__range" id="range">
+					<p>Star rating: <span id="rangeValue"></span></p>
+				</div>
+			</section>
+			<hr>
 
-	</section>
+			<section class="containr">
+				<p class="search-results search-results--size">
+					<span><strong>Total Results:&nbsp;</strong> </span>
+					<span class="total-result"></span>
+				</p>
+				<section class="search-movies search-movies--list"></section>
+			</section>
+
+		</article>
+	</main>
 </body>
-<script type="module" src="assets/js/movie-search/movie-search.js"></script>
+<script type="module" src="assets/js/movie-search.js"></script>
 
 </html>

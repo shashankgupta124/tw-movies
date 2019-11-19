@@ -1,8 +1,3 @@
-.containr {
-    width: 95%;
-    min-width: 39em;
-    margin: 1em auto;
-}
 /* actor style start */
 .actor {
     display: flex;
@@ -61,7 +56,7 @@
 }
 .filmography__film__list {
     display: flex;
-    flex-direction: row;
+    flex-wrap: wrap;
 }
 .filmography__film--year{
     padding: .5em 1em;

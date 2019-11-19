@@ -1,5 +1,3 @@
-
-
 /* movies  respnsive pointer for tablate */
 @media only screen and (max-width: 768px) {
     .card{
@@ -22,6 +20,7 @@
         overflow-x: hidden;
     }
 }
+
 @media only screen and (max-width: 848px) {
 	.movie-modal__details {
         flex-direction: column;

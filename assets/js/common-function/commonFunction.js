@@ -2,16 +2,15 @@
 import { VARIABLES } from "./commonVariables.js";
 
 // common variable for all functions
-
-export var gen = [];
 export var fun = {
 	getMovieGenres: function () {
 		fetch(VARIABLES.MOVIE_GENRES)
 			.then(response => { return response.json(); })
-			.then((data) => { gen = data.genres; })
+			.then((data) => { localStorage.setItem('genres', JSON.stringify(data.genres)); })
 			.catch(function (error) { console.log("getMovieDetails: ", error) });
 	},
-	getGenres: function (genresIds, gens) {
+	getGenres: function (genresIds) {
+		var gens = JSON.parse(localStorage.getItem('genres'));
 		try {
 			let names = [];
 			gens.forEach(elements => {
@@ -84,5 +83,17 @@ export var fun = {
 		return parent_node.querySelector(_class).appendChild(child);
 	},
 	querry: function (_class) { return document.querySelector(_class); },
+	activeLink: function () {
+		let head = document.querySelectorAll('.navbar__item');
+		if (window.location.href.includes('search-page.html') == true) {
+			head[1].setAttribute('class', 'navbar__item navbar__item--active');
+			head[0].setAttribute('class', 'navbar__item');
+		} else {
+			head[0].setAttribute('class', 'navbar__item navbar__item--active');
+			head[1].setAttribute('class', 'navbar__item');
+		}
+	},
 };
 fun.bindTemplate('#header', '.header', 'headerTemp'); // need to check template avalable or not
+fun.activeLink();
+

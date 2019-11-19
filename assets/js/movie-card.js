@@ -1,16 +1,10 @@
 "use strict";
-import { VARIABLES } from "../common-function/commonVariables.js";
-import { fun, gen } from "../common-function/commonFunction.js";
-import { api } from "../common-function/movies-api.js";
-import { bind_Modal } from "../modal/card-popup.js";
+import { VARIABLES } from "./common-function/commonVariables.js";
+import { fun } from "./common-function/commonFunction.js";
+import { api } from "./common-function/movies-api.js";
+import { bind_Modal } from "./card-popup.js";
 
 fun.getMovieGenres();
-function genre(genresIds) {
-    try {
-        return fun.getGenres(genresIds, gen);
-    }
-    catch (ex) { console.log("getGenres error: ", ex); }
-}
 
 // movie card
 export function getMovieItem(movieItem, length) {
@@ -24,10 +18,11 @@ export function getMovieItem(movieItem, length) {
                         <img slot="movie-img" class="card-image" id="${movie.id}" src="${img}" title="${movie.title}" role="img">
                         <span slot="movie-title">${movie.title}</span>
                         <i slot="movie-popularity" class="fa ${movie.popularity > 200 ? 'fa-heart' : 'fa-heart-o'} text-danger pull-right"></i>
-                        <p slot="movie-genres" class="cart__item">${genre(movie.genre_ids)}</p>
+                        <p slot="movie-genres" class="cart__item">${fun.getGenres(movie.genre_ids)}</p>
                         <span slot="movie-rating" class="card__rating"> ${fun.rating(movie.vote_average)} </span>
                         <span slot="more-info" class="show-more text-info pull-right">Show more</span>
                      </movie-card>`;
+                     //${fun.getGenres(movie.genre_ids, JSON.parse(localStorage.getItem('genres')))}</p>
             }
         }
         return card;

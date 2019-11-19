@@ -1,6 +1,6 @@
-import { fun } from '../common-function/commonFunction.js';
-import { VARIABLES } from '../common-function/commonVariables.js';
-import { api } from '../common-function/movies-api.js';
+import { fun } from './common-function/commonFunction.js';
+import { VARIABLES } from './common-function/commonVariables.js';
+import { api } from './common-function/movies-api.js';
 
 // bind Actor Template
 fun.bindTemplate('#actorTemp', '.actor-details', 'movie-actor');
@@ -18,7 +18,7 @@ Promise.all(allActorData).then(response => {
                 actor_Card.querySelector('.actor__image').src = actorData.profile_path ? VARIABLES.IMG_PATH + actorData.profile_path : 'assets/img/No-image.jpg';
                 fun.createText(actor_Card, '.actor__heading', actorData.name);
                 fun.createText(actor_Card, '.actor__biography', actorData.biography);
-                fun.createText(actor_Card, '.actor__content__popularity--rating', actorData.popularity ? Math.round(actorData.popularity) : '1' );
+                fun.createText(actor_Card, '.actor__content__popularity--rating', actorData.popularity ? Math.round(actorData.popularity) : '1');
 
                 if (actorData.birthday != null && actorData.birthday != "") {
                     fun.createText(actor_Card, '.actor__dob', `Date of birth: ${actorData.birthday}`);
@@ -40,7 +40,7 @@ Promise.all(allActorData).then(response => {
                 let filmography = fun.querry(".filmography");
                 let filmography__card = fun.querry(".filmography__card");
                 let film__list = fun.querry(".film__list_card");
-                
+
                 // bind filmography
                 yearArray.map(uniqueYear => {
                     let cloneHeading = document.importNode(filmography__card.content, true);
@@ -65,5 +65,5 @@ Promise.all(allActorData).then(response => {
             catch (ex) { console.log("Movie-Actor error: ", ex) }
         }
     }
-    actor.getActor(),actor.getFilmography();
+    actor.getActor(), actor.getFilmography();
 });

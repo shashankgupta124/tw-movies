@@ -1,23 +1,18 @@
 "use strict";
-import { getMovieItem } from "../movie-home/movie-card.js";
+import { getMovieItem } from "../movie-card.js";
 import { VARIABLES, allMoviesRes } from "./commonVariables.js";
 
 // commom function for all movie api call  
-
-//do this by localStorage to avoid api call
-// do the genres with seme method
-
-
 export var api = {
     getMovies: function (url, _class, index) {
-        return fetch(url)
+        fetch(url)
             .then(movies => { return movies.json(); })
             .then((response) => {
                 console.log("getMovies:", response);
                 document.getElementsByClassName(_class)[index].innerHTML = getMovieItem(response.results, 4);
 
                 //store response for search page
-                allMoviesRes.push(response.results);
+                allMoviesRes.push(...response.results);
                 localStorage.setItem('movie', JSON.stringify(allMoviesRes));
 
             }).catch(function (error) { console.log("getMovies error: ", error) });

@@ -8,7 +8,7 @@ body {
   margin: 0;
     font-family: calibri;
 }  
-main {
+main, datalist {
   display: block;
 }  
 h1 {

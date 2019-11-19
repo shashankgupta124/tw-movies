@@ -1,6 +1,6 @@
 "use strict";
-import { VARIABLES } from "../common-function/commonVariables.js";
-import { fun } from "../common-function/commonFunction.js";
+import { VARIABLES } from "./common-function/commonVariables.js"
+import { fun } from "./common-function/commonFunction.js";
 
 // PopUp custom element
 export function bind_Modal(modalData) {
@@ -62,11 +62,3 @@ customElements.define("model-popup",
         }
     }
 )
-// try {
-//     function removeModal() {
-//         document.getElementsByTagName('model-popup').length && document.body.removeChild(document.getElementsByTagName('model-popup')[0]);
-//     }
-//     window.addEventListener('click', removeModal);
-// }
-// catch (ex) { console.log("removeModal error: ", ex); }
-//}

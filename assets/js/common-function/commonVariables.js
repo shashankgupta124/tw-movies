@@ -1,8 +1,27 @@
 "use strict";
 
-const API_KEY = "b5edb90984ff194c19f0463f984506c0";
-export var allMoviesRes =[];
+export var allMoviesRes = [];
+if (allMoviesRes.length == 0) {
+    try {
+        allMoviesRes = (JSON.parse(localStorage.getItem('movie')));
 
+        if (allMoviesRes != null) {
+            let ids = [], filteredMovie = [];
+            allMoviesRes.map(item => {
+                if (item != '') {
+                    if (ids.indexOf(item.id) == -1) {
+                        ids.push(item.id);
+                        filteredMovie.push(item);
+                    }
+                }
+            });
+            allMoviesRes = filteredMovie;
+        } else { allMoviesRes = []; }
+    }
+    catch (ex) { }
+}
+
+const API_KEY = "b5edb90984ff194c19f0463f984506c0";
 // All movie API variables
 export const VARIABLES = {
     IMG_PATH: `https://image.tmdb.org/t/p/w500`,
@@ -11,7 +30,18 @@ export const VARIABLES = {
     TRENDING_MOVIES: `https://api.themoviedb.org/3/trending/movie/week?api_key=${API_KEY}`,
     POPULAR_MOVIES: `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`,
     MOVIE_GENRES: `https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}&language=en-US`,
-
+    HOME: function () {
+        return document.getElementsByClassName("home")[0];
+    },
+    ACTOR: function () {
+        return document.getElementsByClassName("actorPage")[0];
+    },
+    DETAILS: function () {
+        return document.getElementsByClassName("movie-details")[0];
+    },
+    SEARCH: function () {
+        return document.getElementsByClassName("movie-search")[0];
+    },
     MOVIE_DETAILS_API: function (MOVIE_ID) {
         return `https://api.themoviedb.org/3/movie/${MOVIE_ID}?api_key=${API_KEY}&language=en-US&append_to_response=credits`
     },

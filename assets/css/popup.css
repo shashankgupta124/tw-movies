@@ -24,6 +24,7 @@
 }
 .movie-modal__details {
     display: flex;
+    /* flex-wrap: wrap; */
     flex-direction: row;
 }
 .movie-modal__title {
@@ -56,4 +57,16 @@
 .movie-description--scroll {
     max-height: 172px;
     overflow-y: auto;
+}
+
+/* popup respnsive pointer for tablate */
+@media only screen and (max-width: 768px) {
+	.movie-modal__details {
+        flex-direction: column;
+    }
+    .movie__quick-view {
+        height: 80%;
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
 }

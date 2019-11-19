@@ -72,8 +72,10 @@ p.castt {
     max-width: 94%;
     max-height: 4.5em;
     padding-right: .5em;
+    margin: 0em;
     text-align: justify;
     overflow: auto;
+    
 }
 
 tr{

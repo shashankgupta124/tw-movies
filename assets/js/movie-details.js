@@ -1,7 +1,7 @@
 "use strict";
-import { fun } from "../common-function/commonFunction.js";
-import { VARIABLES } from "../common-function/commonVariables.js";
-import { api } from "../common-function/movies-api.js";
+import { fun } from "./common-function/commonFunction.js";
+import { VARIABLES } from "./common-function/commonVariables.js";
+import { api } from "./common-function/movies-api.js";
 
 const MOVIE_ID = fun.searchParam('id');
 
@@ -11,6 +11,7 @@ api.getMovies(VARIABLES.RELATED_MOVIES_API(MOVIE_ID), 'related-movies', 0);
 // binding movie-details
 api.getMovieDetails(MOVIE_ID).then(movie => {
 	try {
+		debugger;
 		console.log("movie-details: ", movie);
 		let movie_details = fun.querry(".movie-details");
 		movie_details.querySelector('.banner__img').src = VARIABLES.IMG_PATH_HD + movie.backdrop_path;

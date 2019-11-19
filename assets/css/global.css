@@ -1,0 +1,8 @@
+@import './reset.css';
+@import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css';
+@import './variables.css';
+@import './movie-details.css';
+@import './movie-actor.css';
+@import './responsive.css';
+@import 'header.css';
+@import 'search-page.css';
