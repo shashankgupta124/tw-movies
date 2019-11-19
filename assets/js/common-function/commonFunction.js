@@ -116,13 +116,12 @@ export var fun = {
 		return SUPPORTS;
 	},
 };
-// fun.bindTemplate('#header', '.header', 'headerTemp'); // need to check template avalable or not
-// fun.activeLink();
-
-if (fun.import_support()) {
-	fun.bindTemplate('#header', '.header', 'headerTemp');
-} else {
-	window.addEventListener('HTMLImportsLoaded', function (e) {
-		fun.bindTemplate('#header', '.header', 'headerTemp');
-	});
-}
+fun.bindTemplate('#header', '.header', 'headerTemp');
+fun.activeLink();
+// if (fun.import_support()) {
+// 	fun.bindTemplate('#header', '.header', 'headerTemp');
+// } else {
+// 	window.addEventListener('HTMLImportsLoaded', function (e) {
+// 		fun.bindTemplate('#header', '.header', 'headerTemp');
+// 	});
+// }

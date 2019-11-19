@@ -1,17 +1,6 @@
 "use strict";
 import { fun } from './commonFunction.js';
 
-export var allMoviesRes = [];
-if (allMoviesRes.length == 0) {
-    try {
-        allMoviesRes = (JSON.parse(localStorage.getItem('movie')));
-        if (allMoviesRes != null) {
-            allMoviesRes = fun.uniqueFilter(allMoviesRes);
-        } else { allMoviesRes = []; }
-    }
-    catch (ex) { }
-}
-
 const API_KEY = "b5edb90984ff194c19f0463f984506c0";
 // All movie API variables
 export const VARIABLES = {
@@ -47,3 +36,13 @@ export const VARIABLES = {
     },
 };
 
+export var allMoviesRes = [];
+if (allMoviesRes.length == 0) {
+    try {
+        allMoviesRes = (JSON.parse(localStorage.getItem('movie')));
+        if (allMoviesRes != null) {
+            allMoviesRes = fun.uniqueFilter(allMoviesRes);
+        } else { allMoviesRes = []; }
+    }
+    catch (ex) { }
+}
