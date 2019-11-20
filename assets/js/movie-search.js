@@ -14,13 +14,14 @@ range.oninput = function () {
 }
 
 let search_movies = {
+	// show defalut records & register events
 	search: () => {
-		let movies = [], filteredMovie = [];;
-		movies = JSON.parse(localStorage.getItem('movie'));
-		console.log('movies:', movies);
+		let filteredMovie = [];;
+		filteredMovie = JSON.parse(localStorage.getItem('movie'));
+		console.log('movies:', filteredMovie);
 
 		//unique result filter
-		filteredMovie = fun.uniqueFilter(movies);
+		filteredMovie = fun.uniqueFilter(filteredMovie);
 
 		// adding event listeners
 		range.addEventListener('change', () => {
@@ -37,7 +38,7 @@ let search_movies = {
 		});
 		search_movies.filterRecords(filteredMovie, 5, '', 'default');
 	},
-
+	// movie search filteration call
 	filterRecords: (filteredMovie, starRating, searchParam, type) => {
 		var totalCard = filteredMovie.filter(item => {
 			try {
