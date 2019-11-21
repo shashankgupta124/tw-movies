@@ -15,7 +15,9 @@ Promise.all(allActorData).then(response => {
         getActor: () => {
             try {
                 // bind actor info
-                actor_Card.querySelector('.actor__image').src = actorData.profile_path ? VARIABLES.IMG_PATH + actorData.profile_path : 'assets/img/No-image.jpg';
+                let img_url = actorData.profile_path ? VARIABLES.IMG_PATH + actorData.profile_path : VARIABLES.DEFAULT_URL;
+                actor_Card.querySelector('.actor__image').src = img_url;
+                actor_Card.querySelector('.actor__image').setAttribute('title', actorData.name);
                 fun.createText(actor_Card, '.actor__heading', actorData.name);
                 fun.createText(actor_Card, '.actor__biography', actorData.biography);
                 fun.createText(actor_Card, '.actor__content__popularity--rating', actorData.popularity ? Math.round(actorData.popularity) : '1');
@@ -41,7 +43,7 @@ Promise.all(allActorData).then(response => {
                 let filmography__card = fun.querry(".filmography__card");
                 let film__list = fun.querry(".film__list_card");
 
-                // bind filmography
+                // // bind filmography
                 yearArray.map(uniqueYear => {
                     let cloneHeading = document.importNode(filmography__card.content, true);
                     cloneHeading.querySelector(".filmography__film--heading").textContent = uniqueYear;
@@ -51,7 +53,7 @@ Promise.all(allActorData).then(response => {
                         let year = new Date(item.release_date).getFullYear();
                         if (uniqueYear == year) {
 
-                            let film_year = document.importNode(film__list.content.querySelectorAll(".filmography__film--year")[0], true);
+                            let film_year = document.importNode(film__list.content.querySelector(".filmography__film--year"), true);
                             film_year.querySelector(".film-title").textContent = item.title;
                             film_year.querySelector(".film-year").textContent = item.release_date;
                             film_year.querySelector(".film-character").textContent = item.character != "" ? item.character : 'Details not provided by supplier!';

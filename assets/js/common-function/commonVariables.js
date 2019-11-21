@@ -1,11 +1,13 @@
 "use strict";
 import { fun } from './commonFunction.js';
 
+export var allMoviesRes = [];
 const API_KEY = "b5edb90984ff194c19f0463f984506c0";
 // All movie API variables
 export const VARIABLES = {
     IMG_PATH: `https://image.tmdb.org/t/p/w500`,
     IMG_PATH_HD: `https://image.tmdb.org/t/p/original`,
+    DEFAULT_URL: `assets/img/No-image.jpg`,
     LATEST_MOVIES: `https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&language=en-US&include_adult=false`,
     TRENDING_MOVIES: `https://api.themoviedb.org/3/trending/movie/week?api_key=${API_KEY}`,
     POPULAR_MOVIES: `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`,
@@ -36,7 +38,6 @@ export const VARIABLES = {
     },
 };
 
-export var allMoviesRes = [];
 if (allMoviesRes.length == 0) {
     try {
         allMoviesRes = (JSON.parse(localStorage.getItem('movie')));

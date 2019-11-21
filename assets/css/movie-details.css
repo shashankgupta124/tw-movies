@@ -20,22 +20,18 @@
     padding: 0.7em 1.5em;
     border-radius: 2em;
 }
-
 .banner__icon {
     margin-left:0.2em;
 }
-
 .content{
     display: flex;
     justify-content: space-between;
     width:100%;
 }
-
 .content__width {
     width:50%;
     padding: 0.5em;
 }
-
 .content__desc {
     font-size: 1em;
     line-height: 1.3em;
@@ -44,17 +40,18 @@
     overflow: auto;
     text-align: justify;
 }
-
 .content__bg{
     background: var(--content-bg);
     border-radius: 5px;
     padding: 1em;
 }
+.content__table .rating{
+    padding:0em;
+}
 .cast a, .castt a{
     text-decoration: none;
     color: var(--z-black);
 }
-
 .cast a:hover, .castt a:hover{
     text-decoration: underline;
     color: var(--sky-blue);
@@ -67,9 +64,8 @@
     text-align: justify;
     overflow: auto;
 }
-
 p.castt {
-    max-width: 94%;
+    /* max-width: 94%; */
     max-height: 4.5em;
     padding-right: .5em;
     margin: 0em;
@@ -77,20 +73,16 @@ p.castt {
     overflow: auto;
     
 }
-
 tr{
     border-bottom: 1px solid var(--light-gray);
 }
-
 th, td {
     padding: 10px;
     text-align: left;
 }
-
 table {
     border-collapse: collapse;
 }
-
 tr:last-child{
     border-bottom: 0px solid #ddd;
 }

@@ -105,6 +105,12 @@ export var fun = {
 			head[1].setAttribute('class', 'navbar__item');
 		}
 	},
+	importLink: (linkID, tempID) => {
+		var link = fun.querry('#quick-view');
+		let template = link.import.getElementById("model-popup").content;
+		let shadowRoot = this.attachShadow({ mode: 'open' });
+		shadowRoot.appendChild(template.cloneNode(true));
+	},
 	//support cross browser
 	import_support: () => {
 		const SUPPORTS = 'import' in document.createElement('link');
@@ -118,6 +124,7 @@ export var fun = {
 };
 fun.bindTemplate('#header', '.header', 'headerTemp');
 fun.activeLink();
+
 // if (fun.import_support()) {
 // 	fun.bindTemplate('#header', '.header', 'headerTemp');
 // } else {

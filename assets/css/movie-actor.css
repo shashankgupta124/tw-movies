@@ -25,10 +25,7 @@
 .actor__content__popularity h2 {
     display: inline;
 }
-.actor__content__popularity h3 {
-    margin: 0;
-    font-weight: 400;
-    margin-left: 0.3em;
+.actor__content__popularity span {
     text-align: center;
 }
 .fa-3x{padding: 0em .20em;}
@@ -60,6 +57,7 @@
 }
 .filmography__film--year{
     padding: .5em 1em;
+    width: 22%;
 }
 .filmography__film--year p {
     margin: .5em 0em;

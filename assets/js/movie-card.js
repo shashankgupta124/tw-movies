@@ -12,17 +12,15 @@ export function getMovieItem(movieItem, length) {
         var card = '';
         for (let [idx, movie] of movieItem.entries()) {
             if (idx < length) {
-
-                let img = movie.backdrop_path ? VARIABLES.IMG_PATH + movie.backdrop_path : 'assets/img/No-image.jpg';
+                let img = movie.backdrop_path ? VARIABLES.IMG_PATH + movie.backdrop_path : VARIABLES.DEFAULT_URL;
                 card += `<movie-card id="${movie.id}">
-                        <img slot="movie-img" class="card-image" id="${movie.id}" src="${img}" title="${movie.title}" role="img">
+                        <img slot="movie-img" class="card-image" id="${movie.id}" src="${img}" title="${movie.title}">
                         <span slot="movie-title">${movie.title}</span>
                         <i slot="movie-popularity" class="fa ${movie.popularity > 200 ? 'fa-heart' : 'fa-heart-o'} text-danger pull-right"></i>
                         <p slot="movie-genres" class="cart__item">${fun.getGenres(movie.genre_ids)}</p>
                         <span slot="movie-rating" class="card__rating"> ${fun.rating(movie.vote_average)} </span>
                         <span slot="more-info" class="show-more text-info pull-right">Show more</span>
                      </movie-card>`;
-                     //${fun.getGenres(movie.genre_ids, JSON.parse(localStorage.getItem('genres')))}</p>
             }
         }
         return card;

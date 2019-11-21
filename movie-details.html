@@ -4,9 +4,9 @@
 <head>
 	<title>Movie Details</title>
 	<link rel="icon" href="./assets/img/favicon.ico" type="image/x-icon">
-	
+
 	<meta charset="utf-8">
-    <meta name="author" content="Shashank Gupta">
+	<meta name="author" content="Shashank Gupta">
 	<meta name="keywords" content="Movies, Latest Movies, Trending Movies, Popular Movies" />
 	<meta name="description" content="This app is all about the movies." />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,14 +28,13 @@
 		<article class="movie-details">
 			<section class="banner" role="banner">
 				<figure>
-					<img src="assets/img/no-banner.jpg" class="banner__img" role="img">
-					<!-- <img class="banner__imgg" role="img"> -->
+					<img src="assets/img/no-banner.jpg" class="banner__img">
 					<figcaption>
 						<h3 class="banner__badge">
 							Mark as favourite
-							<a class="banner__icon">
+							<span class="banner__icon">
 								<i class="fa fa-heart-o text-danger"></i>
-							</a>
+							</span>
 						</h3>
 					</figcaption>
 				</figure>
@@ -62,7 +61,7 @@
 									</tr>
 									<tr>
 										<th>
-										Cast
+											Cast
 										</th>
 										<td>
 											<p class="cast"></p>
@@ -94,8 +93,8 @@
 		</article>
 
 		<article class="container">
-			<h2 role="heading">Related Movies</h2>
-			<section id="related-movies" class="movies_list related-movies"></section>
+			<h2 class="card-heading" role="heading">Related Movies</h2>
+			<section class="movies_list related-movies"></section>
 		</article>
 	</main>
 	<!-- Main end -->

@@ -74,24 +74,21 @@ let search_movies = {
 		document.querySelector('.search-movies').innerHTML = getMovieItem(totalCard, totalCard.length);
 		document.querySelector('.total-result').textContent = results;
 	},
-
 	showAllRecords: (starRating, searchParam, type) => {
 		if (type == 'default' || (type == 'button' && searchParam == '')) {
 			rangeValue.textContent = starRating; range.value = starRating; input.value = '';
 			return true;
 		}
 	},
-
 	findGenresAndMovie: (searchParam, title, genres) => {
 		if (searchParam != '' && (title.includes(searchParam) || genres.includes(searchParam))) { return true; }
 	},
-
 	matchRating: (type, rating, starRating) => {
-		if ((type == 'rating' || type == 'button') && rating == starRating) {
+		// compare type 'button' to show records in combination of type 'input' & 'rating'
+  		if ((type == 'rating' || type == 'button') && rating == starRating) {
 			return true;
 		}
 	},
-
 	matchInput: (type, rating) => {
 		if ((type == 'input' || type == 'button') && rating <= 5) {
 			return true;

@@ -8,8 +8,9 @@ export function bind_Modal(modalData) {
     let modal;
     document.getElementsByTagName('model-popup').length && document.body.removeChild(document.getElementsByTagName('model-popup')[0]);
     modal = document.createElement('model-popup');
+    let img = modalData.backdrop_path ? VARIABLES.IMG_PATH + modalData.backdrop_path : VARIABLES.DEFAULT_URL;
     modal.innerHTML = `<span slot="movie-quick-title">${modalData.title}</span>
-                      <img slot="movie-modal-image" class="popup--img" src="${VARIABLES.IMG_PATH + modalData.backdrop_path}" title="${modalData.title}"/> 
+                      <img slot="movie-modal-image" class="popup--img" src="${img}" title="${modalData.title}"/> 
                       <span slot="movie-modal-description">${modalData.overview}</span>
                       <span slot="movie-modal-genres">${modalData.genres.map(genre => genre.name)}</span>
                       <p slot="movie-modal-cast" class="castt">${fun.castName(modalData.credits.cast)}</p>

@@ -18,6 +18,7 @@ const MOVIE_DETAILS = {
 				console.log("movie-details: ", movie);
 				let movie_details = fun.querry(".movie-details");
 				movie_details.querySelector('.banner__img').src = VARIABLES.IMG_PATH_HD + movie.backdrop_path;
+				movie_details.querySelector('.banner__img').setAttribute('title', movie.original_title);
 				fun.createText(movie_details, '.content__heading', movie.original_title);
 				fun.createText(movie_details, '.content__desc', movie.overview);
 				fun.createText(movie_details, '.genre-names', fun.genresName(movie.genres));
