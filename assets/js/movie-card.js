@@ -6,6 +6,7 @@ import { bind_Modal } from "./card-popup.js";
 
 fun.getMovieGenres();
 
+const cartLink = "assets/template/card.html";
 // movie card
 export function getMovieItem(movieItem, length) {
     try {
@@ -32,11 +33,20 @@ customElements.define('movie-card',
     class MovieCard extends HTMLElement {
         constructor() { super(); }
 
-        connectedCallback() {
+        async connectedCallback() {
             try {
+                // var link = document.querySelector('#card');
+                // let template = link.import.getElementById("movie-card").content;
+                // let shadowRoot = this.attachShadow({ mode: 'open' });
+                // shadowRoot.appendChild(template.cloneNode(true));
+
                 //bind card
-                var link = document.querySelector('#card');
-                let template = link.import.getElementById("movie-card").content;
+                const response = await fetch(cartLink);
+                const templateHTML = await response.text();
+                let template = document.createElement('div');
+                template.innerHTML = templateHTML;
+                
+                template = template.getElementsByTagName('template')['movie-card'].content
                 let shadowRoot = this.attachShadow({ mode: 'open' });
                 shadowRoot.appendChild(template.cloneNode(true));
 

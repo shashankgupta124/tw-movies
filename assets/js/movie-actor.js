@@ -2,6 +2,8 @@ import { fun } from './common-function/commonFunction.js';
 import { VARIABLES } from './common-function/commonVariables.js';
 import { api } from './common-function/movies-api.js';
 
+const actorTempLink = 'assets/template/actorTemp.html';
+
 // bind Actor Template
 fun.bindTemplate('#actorTemp', '.actor-details', 'movie-actor');
 let actor_Card = fun.querry(".actor-details");
@@ -26,9 +28,9 @@ Promise.all(allActorData).then(response => {
                     fun.createText(actor_Card, '.actor__dob', `Date of birth: ${actorData.birthday}`);
                 }
             }
-            catch (ex) { console.log("Movie-Actor error: ", ex) }
+            catch (ex) { console.log("getActor Movie-Actor error: ", ex) }
         },
-        getFilmography: () => {
+        getFilmography: async () => {
             try {
                 // method for finding all unique year
                 let yearArray = [], uniqueSet = new Set();
@@ -42,6 +44,13 @@ Promise.all(allActorData).then(response => {
                 let filmography = fun.querry(".filmography");
                 let filmography__card = fun.querry(".filmography__card");
                 let film__list = fun.querry(".film__list_card");
+
+                // // geting module html content
+                // const response = await fetch(actorTempLink);
+                // const templateHTML = await response.text();
+                // let template = document.createElement('div');
+                // template.innerHTML = templateHTML;
+                // template = template.getElementsByTagName('template')['model-popup'].content
 
                 // // bind filmography
                 yearArray.map(uniqueYear => {
@@ -64,7 +73,7 @@ Promise.all(allActorData).then(response => {
                     });
                 });
             }
-            catch (ex) { console.log("Movie-Actor error: ", ex) }
+            catch (ex) { console.log("getFilmography Movie-Actor error: ", ex) }
         }
     }
     actor.getActor(), actor.getFilmography();

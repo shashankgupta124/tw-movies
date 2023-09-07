@@ -1,20 +1,22 @@
 "use strict";
 import { VARIABLES } from "./commonVariables.js";
 
+const headerLink = 'assets/template/header.html';
+const quickViewLink = 'assets/template/popup.html'
 // common variable for all functions
-export var fun = {
+export let fun = {
 	getMovieGenres: () => {
 		fetch(VARIABLES.MOVIE_GENRES)
-			.then(response => { return response.json(); })
-			.then((data) => { localStorage.setItem('genres', JSON.stringify(data.genres)); })
-			.catch(error => { console.log("getMovieDetails: ", error) });
+			.then(response => response.json())
+			.then((data) => localStorage.setItem('genres', JSON.stringify(data.genres)))
+			.catch(error => console.log("getMovieDetails: ", error));
 	},
 	getGenres: genresIds => {
-		var gens = JSON.parse(localStorage.getItem('genres'));
+		let gens = JSON.parse(localStorage.getItem('genres'));
 		try {
 			let names = [];
-			gens.forEach(elements => {
-				genresIds.forEach(id => { if (id == elements.id ? names.push(elements.name) : ''); });
+			gens.map(elements => {
+				genresIds.map(id => { if (id == elements.id ? names.push(elements.name) : ''); });
 			});
 			return names.join(', ');
 		}
@@ -34,18 +36,15 @@ export var fun = {
 	},
 	genresName: genres => {
 		try {
-			let genresName = [];
-			genres.forEach((item, index) => {
-				genresName.push(item.name);
-			});
-			return genresName;
+			let genresName = genres.map(item => item.name);
+			return genresName.join(', ');
 		}
 		catch (ex) { console.log("genresName error: ", ex); }
 	},
 	castName: cast => {
 		try {
 			let cast_name = '';
-			cast.forEach(item => {
+			cast.map(item => {
 				cast_name += `<a href='movie-actor.html?id=${item.id}'>${item.name}</a>, `;
 			});
 			return cast_name;
@@ -59,71 +58,115 @@ export var fun = {
 		catch (ex) { console.log("directName error: ", ex); }
 	},
 	uniqueFilter: response => {
-		let ids = [], filtered = [];
-		response.map(item => {
-			if (item != '') {
-				if (ids.indexOf(item.id) == -1) {
-					ids.push(item.id);
-					filtered.push(item);
+		try {
+			let ids = [], filtered = [];
+			response.filter(item => {
+				if (item != '') {
+					if (ids.indexOf(item.id) == -1) {
+						ids.push(item.id);
+						filtered.push(item);
+					}
 				}
-			}
-		});
-		return response = filtered;
+			});
+			return response = filtered;
+		}
+		catch (ex) { console.log("uniqueFilter error: ", ex); }
 	},
 	searchParam: id => {
-		return new URLSearchParams(window.location.search).get(id);
+		try {
+			return new URLSearchParams(window.location.search).get(id);
+		}
+		catch (ex) { console.log("searchParam error: ", ex); }
 	},
-	bindTemplate: (link, get_temp_Class, bindTempClass) => {
-		var temp_link = document.querySelector(link);
-		let clone = temp_link.import.querySelector(get_temp_Class);
-		document.getElementById(bindTempClass).appendChild(clone.cloneNode(true));
+	bindTemplate: async (get_temp_Class, bindTempClass) => {
+		try {
+			const response = await fetch(headerLink);
+			const templateHTML = await response.text();
+			const tempDiv = document.createElement('div');
+			tempDiv.innerHTML = templateHTML;
+			
+			const clone = tempDiv.querySelector(get_temp_Class);
+			// const temp_link = document.querySelector(link);
+			// let clone = temp_link.import.querySelector(get_temp_Class);
+			document.getElementById(bindTempClass).appendChild(clone.cloneNode(true));
+		}
+		catch (ex) { console.log("bindTemplate error: ", ex); }
 	},
 	createText: (element, _class, text) => {
-		if (text != null && text != "") {
-			element.querySelector(_class).appendChild(document.createTextNode(text));
+		try {
+			if (text != null && text != "") {
+				element.querySelector(_class).appendChild(document.createTextNode(text));
+			}
+			else {
+				element.querySelector(_class).appendChild(document.createTextNode('Details not Provided by supplier!'));
+			}
 		}
-		else {
-			element.querySelector(_class).appendChild(document.createTextNode('Details not Provided by supplier!'));
-		}
+		catch (ex) { console.log("createText error: ", ex); }
 	},
 	createTextNode: (element, _class, text) => {
-		if (text != null && text != "") {
-			return element.querySelector(_class).appendChild(document.createTextNode(text));
+		try {
+			if (text != null && text != "") {
+				return element.querySelector(_class).appendChild(document.createTextNode(text));
+			}
 		}
+		catch (ex) { console.log("createTextNode error: ", ex); }
 	},
 	appendChild: (parent_node, _class, child) => {
-		return parent_node.querySelector(_class).appendChild(child);
-	},
-	querry: _class => { return document.querySelector(_class); },
-	activeLink: () => {
-		let head = document.querySelectorAll('.navbar__item');
-		if (window.location.href.includes('search-page.html') == true) {
-			head[1].setAttribute('class', 'navbar__item navbar__item--active');
-			head[0].setAttribute('class', 'navbar__item');
-		} else {
-			head[0].setAttribute('class', 'navbar__item navbar__item--active');
-			head[1].setAttribute('class', 'navbar__item');
+		try {
+			return parent_node.querySelector(_class).appendChild(child);
 		}
+		catch (ex) { console.log("appendChild error: ", ex); }
 	},
-	importLink: (linkID, tempID) => {
-		var link = fun.querry('#quick-view');
-		let template = link.import.getElementById("model-popup").content;
-		let shadowRoot = this.attachShadow({ mode: 'open' });
-		shadowRoot.appendChild(template.cloneNode(true));
+	querry: _class => {
+		try {
+			return document.querySelector(_class);
+		}
+		catch (ex) { console.log("querry error: ", ex); }
+	},
+	activeLink: () => {
+		try {
+			let head = document.querySelectorAll('.navbar__item');
+			if (window.location.href.includes('search-page.html') == true) {
+				head[1].setAttribute('class', 'navbar__item navbar__item--active');
+				head[0].setAttribute('class', 'navbar__item');
+			} else {
+				head[0].setAttribute('class', 'navbar__item navbar__item--active');
+				head[1].setAttribute('class', 'navbar__item');
+			}
+		}
+		catch (ex) { console.log("activeLink error: ", ex); }
+	},
+	importLink: async (linkID, tempID) => {
+		try {
+			//bind card
+			const response = await fetch(quickViewLink);
+			const templateHTML = await response.text();
+			let template = document.createElement('div');
+			template.innerHTML = templateHTML; 
+			template = template.getElementsByTagName('template')['model-popup'].content
+			
+			// let link = fun.querry('#quick-view');
+			// let template = link.import.getElementById("model-popup").content;
+			let shadowRoot = this.attachShadow({ mode: 'open' });
+			shadowRoot.appendChild(template.cloneNode(true));
+		}
+		catch (ex) { console.log("importLink error: ", ex); }
 	},
 	//support cross browser
 	import_support: () => {
-		const SUPPORTS = 'import' in document.createElement('link');
-		if (!SUPPORTS) {
-			const polymer = document.createElement('script');
-			polymer.src = "assets/js/polymer.min.js";
-			document.body.appendChild(polymer);
+		try {
+			const SUPPORTS = 'import' in document.createElement('link');
+			if (!SUPPORTS) {
+				const polymer = document.createElement('script');
+				polymer.src = "assets/js/polymer.min.js";
+				document.body.appendChild(polymer);
+			}
+			return SUPPORTS;
 		}
-		return SUPPORTS;
-	},
+		catch (ex) { console.log("import_support error: ", ex); }
+	}
 };
-fun.bindTemplate('#header', '.header', 'headerTemp');
-fun.activeLink();
+fun.bindTemplate('.header', 'headerTemp');
 
 // if (fun.import_support()) {
 // 	fun.bindTemplate('#header', '.header', 'headerTemp');
@@ -132,3 +175,5 @@ fun.activeLink();
 // 		fun.bindTemplate('#header', '.header', 'headerTemp');
 // 	});
 // }
+
+fun.activeLink();

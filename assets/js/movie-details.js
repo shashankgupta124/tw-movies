@@ -14,8 +14,16 @@ const MOVIE_DETAILS = {
 	movieDetails: () => {
 		api.getMovieDetails(MOVIE_ID).then(movie => {
 			try {
-				debugger;
 				console.log("movie-details: ", movie);
+				document.getElementsByClassName('fill-heart')[0].addEventListener('click', (event) => {
+					try {
+						if (event.target.classList[1] === 'fa-heart') {
+							return event.target.className.replace('fa-heart', 'fa-heart-o');
+						}
+						else { return event.target.className.replace('fa-heart-o', 'fa-heart'); }
+					} catch (ex) { }
+				});
+
 				let movie_details = fun.querry(".movie-details");
 				movie_details.querySelector('.banner__img').src = VARIABLES.IMG_PATH_HD + movie.backdrop_path;
 				movie_details.querySelector('.banner__img').setAttribute('title', movie.original_title);

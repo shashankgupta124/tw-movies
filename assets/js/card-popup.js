@@ -24,11 +24,17 @@ customElements.define("model-popup",
     class MoviePopUp extends HTMLElement {
         constructor() { super(); }
 
-        connectedCallback() {
+        async connectedCallback() {
             try {
+                const response = await fetch(quickViewLink);
+                const templateHTML = await response.text();
+                let template = document.createElement('div');
+                template.innerHTML = templateHTML;
+                template = template.getElementsByTagName('template')['model-popup'].content
+
                 // Bring in the import content.
-                var link = fun.querry('#quick-view');
-                let template = link.import.getElementById("model-popup").content;
+                // var link = fun.querry('#quick-view');
+                // let template = link.import.getElementById("model-popup").content;
                 let shadowRoot = this.attachShadow({ mode: 'open' });
                 shadowRoot.appendChild(template.cloneNode(true));
 
